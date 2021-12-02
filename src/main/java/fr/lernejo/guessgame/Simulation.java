@@ -55,8 +55,10 @@ public class Simulation {
             else{
                 logger.log("Le nombre n'a pas été trouvé, la limite d'itérations a été atteinte :" +i+" itérations");
             }
-            final long endTime = System.currentTimeMillis();
-            final long time= endTime - startTime;
-            logger.log("Total execution time: " +time/60000+":"+time/1000+"."+time);
+
+            long endTime = System.currentTimeMillis();
+            long mm = ((endTime-startTime)/600000);
+            long ss = ((endTime-startTime)/1000);
+            logger.log(mm+" mm "+ss+" ss "+((endTime-startTime)-(ss*1000)-(mm*600000))+" SSS");
         }
 }
