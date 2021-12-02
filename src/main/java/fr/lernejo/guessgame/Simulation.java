@@ -25,7 +25,7 @@ public class Simulation {
         //TODO implement me
         Long test = player.askNextGuess();
         if (test.equals(numberToGuess)) {
-            logger.log("Number found");
+            logger.log("Win");
             return true;
         } else {
             if (test.compareTo(numberToGuess) > 0) {
