@@ -3,22 +3,27 @@ package fr.lernejo.guessgame;
 import fr.lernejo.logger.Logger;
 import fr.lernejo.logger.LoggerFactory;
 
-import java.util.Scanner;
-
-public class HumanPlayer implements Player {
+public class ComputerPlayer implements Player{
     Logger logger = LoggerFactory.getLogger("player");
+    long min=Long.MIN_VALUE;
+    long max=Long.MAX_VALUE;
+    long num;
     @Override
     public long askNextGuess() {
-        logger.log("Veuillez indiquer un chiffre :");
-        Scanner sc = new Scanner(System.in);
-        return sc.nextLong();
+        num=(max+min)/2;
+        logger.log("tentative :"+num);
+        return num;
     }
 
     @Override
     public void respond(boolean lowerOrGreater) {
-        if(lowerOrGreater)
+        if(lowerOrGreater) {
             logger.log("plus grand");
-        else
+            min=num;
+        }
+        else {
             logger.log("plus petit");
+            max=num;
+        }
     }
 }

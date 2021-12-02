@@ -40,11 +40,23 @@ public class Simulation {
     }
 
 
-    public void loopUntilPlayerSucceed() {
+    public void loopUntilPlayerSucceed(long a) {
+        final long startTime = System.currentTimeMillis();
+        int i=0;
         //TODO implement me
-        boolean test = nextRound();
-        while (!test) {
-            test = nextRound();
+            boolean test = nextRound();
+            while (!test && i<a) {
+                test = nextRound();
+                i++;
+            }
+            if (i<a){
+                logger.log("le nombre a été trouvé en "+i+" itérations");
+            }
+            else{
+                logger.log("Le nombre n'a pas été trouvé, la limite d'itérations a été atteinte :" +i+" itérations");
+            }
+            final long endTime = System.currentTimeMillis();
+            final long time= endTime - startTime;
+            logger.log("Total execution time: " +time/60000+":"+time/1000+"."+time);
         }
-    }
 }
