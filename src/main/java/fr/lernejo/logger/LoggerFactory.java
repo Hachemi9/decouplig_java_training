@@ -1,7 +1,13 @@
 package fr.lernejo.logger;
 
+import java.util.function.Predicate;
+
 public class LoggerFactory {
     public static Logger getLogger(String name){
-        return new ContextualLogger(new CompositeLogger(new FileLogger("/home/soldier/developpement/logs_tp/logs.txt"), new ConsoleLogger()), name);
+
+        Logger filelogger = new FileLogger("./logs.txt");
+        Predicate<String> condition = message -> message.contains("simulation");
+        return new CompositeLogger(new ContextualLogger(name, new ConsoleLogger()), new ContextualLogger(name, new FilteredLogger(filelogger,condition)));
+
     }
 }

@@ -13,7 +13,7 @@ String callerClass;
         delegateLogger.log(LocalDateTime.now().format(format) + " " + callerClass + " " + message);
     }
 
-    public ContextualLogger(Logger delegateLogger, String callerClass) {
+    public ContextualLogger(String callerClass, Logger delegateLogger) {
         this.delegateLogger = delegateLogger;
         this.callerClass = callerClass;
     }

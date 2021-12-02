@@ -9,7 +9,6 @@ public class HumanPlayer implements Player {
     Logger logger = LoggerFactory.getLogger("player");
     @Override
     public long askNextGuess() {
-        logger.log("Veuillez indiquer un chiffre :");
         Scanner sc = new Scanner(System.in);
         return sc.nextLong();
     }
